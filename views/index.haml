@@ -1,18 +1,31 @@
-%h1 Hey lets go find some fun movies to watch.
+%head
+  %link{:rel => :stylesheet, :type => :"text/css", :href => "/styles.css"}
+
+%body
+  %h1 Hey lets go find some fun movies to watch.
+
+  %form{action:"/"}
+    Movie Title:
+    %input{type:"text", name:"title", placeholder:"Avengers"}
+
+    %br
+    %input{type:"submit", value:"Submit"}
 
 
+  - if @movies_array
+    %h2 Movies
+    - @movies_array.each do |movie|
 
-%form{action:"/"}
-  Movie Title:
-  %input{type:"text", name:"title", placeholder:"Avengers"}
-
-  %br
-  %input{type:"submit", value:"Submit"}
-
-
-- if @movies_array
-  %h2 Movies
-  - @movies_array.each do |movie|
-    %h3= movie["Title"]
-    = movie["Year"]
-    = movie["imdbOD"]
+      %table
+        %tr
+          %th= movie["Title"]
+        %tbody.movie-details
+          %tr
+            %td= movie["Year"]
+          %tr
+            %td= movie["imdbID"]
+          %tr
+            %td= movie["Type"]
+          %tr
+            %td
+              %img{:src => "#{movie["Poster"]}"}

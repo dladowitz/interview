@@ -1,3 +1,5 @@
+require 'bundler/setup'
+require 'haml'
 require 'httparty'
 require 'pry'
 require 'sinatra'
@@ -8,13 +10,16 @@ set :haml, :format => :html5
 
 get '/' do
 
-  search_query = params[:title]
+  if params[:title]
+    search_query = params[:title]
+    search_query = search_query.gsub(" ", "+")
 
-  omdb_response = HTTParty.get("http://www.omdbapi.com/?s=#{search_query}")
+    omdb_response = HTTParty.get("http://www.omdbapi.com/?s=#{search_query}")
 
-  omdb_hash_response = JSON.parse(omdb_response.body)
-  @movies_array = omdb_hash_response["Search"]
-  # binding.pry
+    omdb_hash_response = JSON.parse(omdb_response.body)
+    @movies_array = omdb_hash_response["Search"]
+    # binding.pry
+  end
 
   haml :index
 end
