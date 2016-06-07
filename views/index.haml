@@ -31,7 +31,15 @@
             %td= movie["Type"]
           %tr
             %td
-              %button{onclick: "addToFavorites( 'name=testing-name&oid=#{movie['imdbID']}' )"} Add to Favorites            
+              %button{id: movie["imdbID"], onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
+                -if @favorite_ids.include? movie["imdbID"]
+                  Added
+                - else
+                  Add to Favorites
           %tr
             %td
               %img{src: "#{movie["Poster"]}"}
+
+  %h2 Favorites
+  %button{onclick: "getFavorites()"} Show All
+  %h3#favorites

@@ -9,6 +9,9 @@ require 'sinatra'
 set :haml, :format => :html5
 
 get '/' do
+  favorite_movies = JSON.parse(File.read('data.json'))
+  @favorite_ids = favorite_movies.map{|movie| movie["oid"]}
+
   if params[:title]
     search_query = params[:title]
     search_query = search_query.gsub(" ", "+")
@@ -22,7 +25,7 @@ get '/' do
   haml :index
 end
 
-get 'favorites' do
+get '/get_favorites' do
   response.header['Content-Type'] = 'application/json'
   File.read('data.json')
 end
@@ -33,7 +36,7 @@ get '/favorites' do
     return 'Invalid Request'
   end
   movie = { name: params[:name], oid: params[:oid] }
-  
+
   file << movie
   File.write('data.json',JSON.pretty_generate(file))
   movie.to_json
