@@ -31,7 +31,7 @@
             %td= movie["Type"]
           %tr
             %td
-              %a{href: "/favorites?name=#{movie['Title']}&oid=#{movie['imdbID']}"}Add to Favorites            
+              %button{onclick: "addToFavorites( 'name=testing-name&oid=#{movie['imdbID']}' )"} Add to Favorites            
           %tr
             %td
               %img{src: "#{movie["Poster"]}"}
