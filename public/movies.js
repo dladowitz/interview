@@ -2,8 +2,14 @@
 // document.getElementById("MyElement").className = "MyClass";
 // document.getElementByClass("movie-details").style.display = "show";
 
-function showDetails(title) {
+function toggleDetails(title) {
   console.log(title)
 
-  document.getElementById(title).style.display = "block";
+  var state = document.getElementById(title).style.display;
+
+  if(state === "block"){
+    document.getElementById(title).style.display = "none";
+  } else {
+    document.getElementById(title).style.display = "block";
+  }
 }

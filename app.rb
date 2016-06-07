@@ -33,6 +33,7 @@ get '/favorites' do
     return 'Invalid Request'
   end
   movie = { name: params[:name], oid: params[:oid] }
+  
   file << movie
   File.write('data.json',JSON.pretty_generate(file))
   movie.to_json

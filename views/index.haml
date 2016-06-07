@@ -20,7 +20,7 @@
       %table
         %tr
           %th
-            %a{href: "#", onclick: "showDetails( '#{movie['Title']}' )" }
+            %a{href: "#", onclick: "toggleDetails( '#{movie['Title']}' )" }
               = movie["Title"]
         %tbody.movie-details{id: movie["Title"]}
           %tr
@@ -29,6 +29,9 @@
             %td= movie["imdbID"]
           %tr
             %td= movie["Type"]
+          %tr
+            %td
+              %a{href: "/favorites?name=#{movie['Title']}&oid=#{movie['imdbID']}"}Add to Favorites            
           %tr
             %td
               %img{src: "#{movie["Poster"]}"}
