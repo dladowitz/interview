@@ -9,7 +9,6 @@ require 'sinatra'
 set :haml, :format => :html5
 
 get '/' do
-
   if params[:title]
     search_query = params[:title]
     search_query = search_query.gsub(" ", "+")
@@ -18,7 +17,6 @@ get '/' do
 
     omdb_hash_response = JSON.parse(omdb_response.body)
     @movies_array = omdb_hash_response["Search"]
-    # binding.pry
   end
 
   haml :index

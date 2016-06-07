@@ -1,5 +1,6 @@
 %head
   %link{:rel => :stylesheet, :type => :"text/css", :href => "/styles.css"}
+  %script(src="/movies.js")
 
 %body
   %h1 Hey lets go find some fun movies to watch.
@@ -18,8 +19,10 @@
 
       %table
         %tr
-          %th= movie["Title"]
-        %tbody.movie-details
+          %th
+            %a{href: "#", onclick: "showDetails( '#{movie['Title']}' )" }
+              = movie["Title"]
+        %tbody.movie-details{id: movie["Title"]}
           %tr
             %td= movie["Year"]
           %tr
@@ -28,4 +31,4 @@
             %td= movie["Type"]
           %tr
             %td
-              %img{:src => "#{movie["Poster"]}"}
+              %img{src: "#{movie["Poster"]}"}
