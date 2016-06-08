@@ -1,0 +1,685 @@
+%html{:lang => "en"}
+  %head
+    / BASIC INFO
+    %title Movie Finder
+
+    / GOOGLE FONTS
+    %link{:href => "http://fonts.googleapis.com/css?family=Montserrat:400,700", :rel => "stylesheet"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800", :rel => "stylesheet"}
+
+    / LIBRARIES CSS
+    %link{:href => "css/bootstrap.min.css", :rel => "stylesheet"}
+    %link{:href => "css/font-awesome.min.css", :rel => "stylesheet"}
+    %link{:href => "css/animate.min.css", :rel => "stylesheet"}
+
+    / SPECIFIC CSS
+    %link{:href => "css/style.css", :rel => "stylesheet"}
+    %link{:href => "css/add-ons.css", :rel => "stylesheet"}
+
+    / COLORS
+    %link#color-css{:href => "css/colors/blue.css", :rel => "stylesheet"}
+
+  %body.enable-animations
+    #document.document
+
+      / HERO
+      %section#hero.hero-section.hero-layout-simple.hero-layout-fullscreen-subscription-form.hero-fullscreen.section.section-dark
+        .section-background
+          %ul.section-background-slideshow.parallax{"data-speed" => "10000", "data-stellar-ratio" => "0.4", "data-timeout" => "4000"}
+            %li
+              %img{:alt => "", :src => "images/backgrounds/manns.jpg", :style => "opacity: 0.1;"}/
+            %li
+              %img{:alt => "", :src => "images/backgrounds/wildey-smaller.jpg", :style => "opacity: 0.1;"}/
+            %li
+              %img{:alt => "", :src => "images/backgrounds/summerville.jpg", :style => "opacity: 0.1;"}/
+            %li
+              %img{:alt => "", :src => "images/backgrounds/chicago.jpg", :style => "opacity: 0.1;"}/
+        .container
+          .hero-content
+            .hero-content-inner
+              .row
+                .col-md-10.col-md-offset-1
+                  .hero-heading.text-center{"data-animation" => "fadeIn"}
+                    %h1.hero-title Search For a Movie
+                  .row
+                    .col-md-10.col-md-offset-1
+
+                      / SEARCH FORM
+                      %form{:action => "/"}
+                        .form-group
+                          %span
+                            %input.form-control.form-control-lg{:name => "title", :placeholder => "Avengers", :type => "text"}
+                          %span.subscription-form-submit
+                            %input.btn.btn-primary.btn-lg{type: "submit", value: "Search"}
+
+      -#   / HERO START LINK
+      -#   %a.hero-start-link.anchor-link{:href => "#headline"}
+      -#     %span.fa.fa-angle-double-down
+      -# /
+      -# / HEADLINE
+      -# / \=================================
+      -# %section#headline.headline-section.section-gray.section
+      -#   .container
+      -#     %h2.section-heading.text-center.hidden Tagline
+      -#     .row
+      -#       .col-md-10.col-md-offset-1
+      -#         %p.headline-text
+      -#           Designed with the best practices,
+      -#           %strong DREW
+      -#           is a premium landing page template which cares much about design quality, functions, and the most important - your successful marketing campaign.
+      -# /
+        DESCRIPTION
+        \=================================
+      %section#about.about-section.section
+        .container
+          %h2.section-heading.text-center About Drew
+          .about-row.row
+            / DESCRIPTION IMAGE
+            .about-image.col-md-6{"data-animation" => "fadeIn"}
+              %img{:alt => "Description Image", :src => "images/contents/about.jpg"}
+            / DESCRIPTION TEXT
+            .about-text.col-md-6
+              %p.lead Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat arcu ut orci porta, eget porttitor felis suscipit. Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros. Duis ex metus, facilisis nec porta non, accumsan vel turpis. Proin euismod, sem a mollis vestibulum, ligula elit faucibus erat, in dignissim sapien leo eget quam.
+              %ul.icon-list
+                %li
+                  %span.icon-list-icon.fa.fa-hand-o-up{"data-animation" => "bounceIn"}
+                  %h4.icon-list-title Click Through
+                  %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+                %li
+                  %span.icon-list-icon.fa.fa-heart-o{"data-animation" => "bounceIn"}
+                  %h4.icon-list-title Lead Generation
+                  %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+                %li
+                  %span.icon-list-icon.fa.fa-lightbulb-o{"data-animation" => "bounceIn"}
+                  %h4.icon-list-title Other Purposes
+                  %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -# /
+      -#   BENEFITS
+      -#   \=================================
+      -# %section#benefits.benefits-section.section-gray.section
+      -#   .container
+      -#     %h2.section-heading.text-center The Benefits
+      -#     .benefits-row.row
+      -#       / BENEFIT 1
+      -#       .col-sm-6.col-md-4
+      -#         .benefit
+      -#           %span.benefit-icon.fa.fa-bicycle{"data-animation" => "bounceIn"}
+      -#           %h4.benefit-title Built with Bootstrap 3.3
+      -#           %p.benefit-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       / BENEFIT 2
+      -#       .col-sm-6.col-md-4
+      -#         .benefit
+      -#           %span.benefit-icon.fa.fa-code{"data-animation" => "bounceIn"}
+      -#           %h4.benefit-title Quick &amp; Easy Setup
+      -#           %p.benefit-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       .hidden-md.hidden-lg.clear
+      -#       / BENEFIT 3
+      -#       .col-sm-6.col-md-4
+      -#         .benefit
+      -#           %span.benefit-icon.fa.fa-eye{"data-animation" => "bounceIn"}
+      -#           %h4.benefit-title Responsive &amp; Retina Ready
+      -#           %p.benefit-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       .hidden-sm.clear
+      -#       / BENEFIT 4
+      -#       .col-sm-6.col-md-4
+      -#         .benefit
+      -#           %span.benefit-icon.fa.fa-smile-o{"data-animation" => "bounceIn"}
+      -#           %h4.benefit-title Clean Codes &amp; Documentation
+      -#           %p.benefit-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       .hidden-md.hidden-lg.clear
+      -#       / BENEFIT 5
+      -#       .col-sm-6.col-md-4
+      -#         .benefit
+      -#           %span.benefit-icon.fa.fa-pagelines{"data-animation" => "bounceIn"}
+      -#           %h4.benefit-title Optimized for Performance
+      -#           %p.benefit-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       / BENEFIT 6
+      -#       .col-sm-6.col-md-4
+      -#         .benefit
+      -#           %span.benefit-icon.fa.fa-paperclip{"data-animation" => "bounceIn"}
+      -#           %h4.benefit-title Fit for Any Purposes
+      -#           %p.benefit-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -# /
+      -#   HOW IT WORKS
+      -#   \=================================
+      -# %section#how-it-works.how-it-works-section.section
+      -#   .container-fluid
+      -#     %h2.section-heading.text-center How it Works
+      -#     .hiw-row.row
+      -#       / HOW IT WORKS - ITEM 1
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .hiw-item
+      -#           %img.hiw-item-picture{:alt => "", :src => "images/contents/hiw-item-1.jpg"}
+      -#             .hiw-item-text
+      -#               %span.hiw-item-icon 1
+      -#               %h4.hiw-item-title Choose a Layout
+      -#               %p.hiw-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       / HOW IT WORKS - ITEM 2
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .hiw-item.even
+      -#           %img.hiw-item-picture{:alt => "", :src => "images/contents/hiw-item-2.jpg"}
+      -#             .hiw-item-text
+      -#               %span.hiw-item-icon 2
+      -#               %h4.hiw-item-title Edit &amp; Customize
+      -#               %p.hiw-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       .hidden-md.hidden-lg.clear
+      -#       / HOW IT WORKS - ITEM 3
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .hiw-item
+      -#           %img.hiw-item-picture{:alt => "", :src => "images/contents/hiw-item-3.jpg"}
+      -#             .hiw-item-text
+      -#               %span.hiw-item-icon 3
+      -#               %h4.hiw-item-title Upload to Hosting
+      -#               %p.hiw-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       / HOW IT WORKS - ITEM 4
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .hiw-item.even
+      -#           %img.hiw-item-picture{:alt => "", :src => "images/contents/hiw-item-4.jpg"}
+      -#             .hiw-item-text
+      -#               %span.hiw-item-icon 4
+      -#               %h4.hiw-item-title Finished!
+      -#               %p.hiw-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -# /
+      -#   NUMBERS
+      -#   \=================================
+      -# %section#numbers.numbers-section.section-dark.section
+      -#   .section-background
+      -#     / IMAGE BACKGROUND
+      -#     .section-background-image.parallax{"data-stellar-ratio" => "0.4"}
+      -#       %img{:src => "images/backgrounds/numbers-bg.jpg", :style => "opacity: 0.2;"}
+      -#   .container
+      -#     %h2.section-heading.text-center Drew in Numbers
+      -#     .numbers-row.row
+      -#       / NUMBERS - ITEM 1
+      -#       .col-sm-6.col-md-3
+      -#         .numbers-item
+      -#           .numbers-item-counter
+      -#             %span.counter-up 1,269
+      -#           .numbers-item-caption Tickets solved
+      -#       / NUMBERS - ITEM 2
+      -#       .col-sm-6.col-md-3
+      -#         .numbers-item
+      -#           .numbers-item-counter
+      -#             %span.counter-up> 99.8
+      -#             \%
+      -#           .numbers-item-caption User Ratings
+      -#       / NUMBERS - ITEM 3
+      -#       .col-sm-6.col-md-3
+      -#         .numbers-item
+      -#           .numbers-item-counter
+      -#             %span.counter-up> 754
+      -#             k
+      -#           .numbers-item-caption Total Users
+      -#       / NUMBERS - ITEM 4
+      -#       .col-sm-6.col-md-3
+      -#         .numbers-item
+      -#           .numbers-item-counter
+      -#             %span.counter-up 358
+      -#             %span.fa.fa-coffee
+      -#           .numbers-item-caption Coffee Served
+      -# /
+      -#   VIDEO SECTION
+      -#   \=================================
+      -# %section#video.video-section.section-gray.section
+      -#   .container
+      -#     %h2.section-heading.text-center Watch the Video
+      -#     .row
+      -#       .col-md-10.col-md-offset-1
+      -#         .video-embed
+      -#           / VIDEO EMBED FROM VIMEO
+      -#           %iframe.video-async{:allowfullscreen => "", "data-color" => "f3ae73", "data-source" => "vimeo", "data-video" => "115134273"}
+      -#           / VIDEO EMBED FROM YOUTUBE
+      -#           / <iframe class="video-async" data-source="youtube" data-video="7UAy8E3e9f8" allowfullscreen></iframe>
+      -# /
+      -#   TEAM
+      -#   \=================================
+      -# %section#team.team-section.section
+      -#   .container-fluid
+      -#     %h2.section-heading.text-center Meet The Experts
+      -#     .team-row.row
+      -#       / TEAM MEMBER 1
+      -#       .col-sm-6.col-md-4.col-lg-2{"data-animation" => "fadeIn"}
+      -#         .team-member
+      -#           %img.team-member-picture{:alt => "", :src => "images/contents/team-member-1.jpg"}
+      -#             .team-member-text
+      -#               %h4.team-member-name Jason Castillo
+      -#               .team-member-position CEO &amp; Co-Founder
+      -#               %p.team-member-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -#       / TEAM MEMBER 2
+      -#       .col-sm-6.col-md-4.col-lg-2{"data-animation" => "fadeIn"}
+      -#         .team-member.even
+      -#           %img.team-member-picture{:alt => "", :src => "images/contents/team-member-2.jpg"}
+      -#             .team-member-text
+      -#               %h4.team-member-name Harold Kelly
+      -#               .team-member-position CTO &amp; Co-Founder
+      -#               %p.team-member-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -#       .hidden-md.hidden-lg.clear
+      -#       / TEAM MEMBER 3
+      -#       .col-sm-6.col-md-4.col-lg-2{"data-animation" => "fadeIn"}
+      -#         .team-member
+      -#           %img.team-member-picture{:alt => "", :src => "images/contents/team-member-3.jpg"}
+      -#             .team-member-text
+      -#               %h4.team-member-name Kathy Nelson
+      -#               .team-member-position Graphic Designer
+      -#               %p.team-member-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -#       .hidden-sm.hidden-lg.clear
+      -#       / TEAM MEMBER 4
+      -#       .col-sm-6.col-md-4.col-lg-2{"data-animation" => "fadeIn"}
+      -#         .team-member.even
+      -#           %img.team-member-picture{:alt => "", :src => "images/contents/team-member-4.jpg"}
+      -#             .team-member-text
+      -#               %h4.team-member-name Dylan Fowler
+      -#               .team-member-position UI/UX Designer
+      -#               %p.team-member-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -#       .hidden-md.hidden-lg.clear
+      -#       / TEAM MEMBER 5
+      -#       .col-sm-6.col-md-4.col-lg-2{"data-animation" => "fadeIn"}
+      -#         .team-member
+      -#           %img.team-member-picture{:alt => "", :src => "images/contents/team-member-5.jpg"}
+      -#             .team-member-text
+      -#               %h4.team-member-name Carolyn Harvey
+      -#               .team-member-position Development
+      -#               %p.team-member-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -#       / TEAM MEMBER 6
+      -#       .col-sm-6.col-md-4.col-lg-2{"data-animation" => "fadeIn"}
+      -#         .team-member.even
+      -#           %img.team-member-picture{:alt => "", :src => "images/contents/team-member-6.jpg"}
+      -#             .team-member-text
+      -#               %h4.team-member-name Diane Grant
+      -#               .team-member-position Marketing &amp; Strategy
+      -#               %p.team-member-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -# /
+      -#   TWO COLS DESCRIPTION SECTION
+      -#   \=================================
+      -# %section#two-cols-description.two-cols-description-section.section-accent.section
+      -#   .container-fluid.two-cols-description-row
+      -#     / TWO COLS DESCRIPTION TEXT
+      -#     .two-cols-description-text{"data-animation" => "fadeInLeft"}
+      -#       .two-cols-description-text-inner
+      -#         %h2.section-heading.text-left Two Columns Section
+      -#         %p You can put image / video embed in the column to the right. If you like, you can also swap the columns, which means this text column will be on the right hand side, while the image column is on the left. While on this column, you may want to put some description paragraphs or a nice list like below:
+      -#         %ul.nice-list
+      -#           %li Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      -#           %li Sed feugiat arcu ut orci porta, eget porttitor felis suscipit.
+      -#           %li Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros.
+      -#     / TWO COLS DESCRIPTION IMAGE
+      -#     .two-cols-description-image{"data-animation" => "fadeInRight"}
+      -#       %img{:alt => "", :src => "images/backgrounds/two-cols-description-bg.jpg"}
+      -# /
+      -#   PRICING SECTION
+      -#   \=================================
+      -# %section#pricing.pricing-section.section
+      -#   .container
+      -#     %h2.section-heading.text-center Pricing Table
+      -#     .row.text-center
+      -#       .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+      -#         %p Maecenas mollis rutrum bibendum. Etiam mollis diam risus, at varius ex dapibus sed. In in leo at sapien placerat sagittis.
+      -#     / PRICING TABLE
+      -#     .pricing-table.row
+      -#       / PRICING PACKAGE 1
+      -#       .col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-0{"data-animation" => "fadeInUp"}
+      -#         .pricing-package
+      -#           .pricing-package-header
+      -#             %h4.price-title Personal
+      -#             .price
+      -#               %span.price-currency $
+      -#               %span.price-number 0
+      -#               %span.price-decimal
+      -#             .price-description FREE Forever
+      -#           %ul.pricing-package-items
+      -#             %li Up to 20 Projects
+      -#             %li 500MB Harddisk Space
+      -#             %li Up to 1000 Monthly Visitors
+      -#             %li
+      -#               %del Custom Domain
+      -#             %li
+      -#               %del Premium Themes Access
+      -#             %li 24/7 Customer Support
+      -#       / PRICING PACKAGE 2
+      -#       .col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-0{"data-animation" => "fadeInUp"}
+      -#         .pricing-package.pricing-package-featured
+      -#           .pricing-package-header
+      -#             %h4.price-title Professional
+      -#             .price
+      -#               %span.price-currency $
+      -#               %span.price-number 13
+      -#               %span.price-decimal 99
+      -#             .price-description Billed monthly
+      -#             .price-featured Most Popular
+      -#           %ul.pricing-package-items
+      -#             %li Up to 200 Projects
+      -#             %li 5GB Harddisk Space
+      -#             %li Unlimited Visitors
+      -#             %li Custom Domain
+      -#             %li
+      -#               %del Premium Themes Access
+      -#             %li 24/7 Customer Support
+      -#       / PRICING PACKAGE 3
+      -#       .col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-0{"data-animation" => "fadeInUp"}
+      -#         .pricing-package
+      -#           .pricing-package-header
+      -#             %h4.price-title Enterprise
+      -#             .price
+      -#               %span.price-currency $
+      -#               %span.price-number 69
+      -#               %span.price-decimal 99
+      -#             .price-description Billed monthly
+      -#           %ul.pricing-package-items
+      -#             %li Unlimited Projects
+      -#             %li Unlimited Harddisk Space
+      -#             %li Unlimited Visitors
+      -#             %li Custom Domain
+      -#             %li Premium Themes Access
+      -#             %li 24/7 Customer Support
+      -# /
+      -#   TESTIMONIAL SLIDER
+      -#   \=================================
+      -# %section#testimonial-slider.testimonial-slider-section.section-dark.section
+      -#   .section-background
+      -#     / IMAGE BACKGROUND
+      -#     .section-background-image.parallax{"data-stellar-ratio" => "0.4"}
+      -#       %img{:src => "images/backgrounds/testimonial-slider-bg.jpg", :style => "opacity: 0.15;"}
+      -#   .container
+      -#     %h2.section-heading.text-center.hidden Trusted by Thousands
+      -#     .testimonial-slider-row.row
+      -#       .col-md-8.col-md-offset-2
+      -#         %ul.testimonial-slider.rslides{"data-auto" => "false", "data-speed" => "800", "data-timeout" => "4000"}
+      -#           / TESTIMONIAL ITEM 1
+      -#           %li.testimonial-slide
+      -#             %span.testimonial-ratings
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#             %blockquote.testimonial-quote
+      -#               %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lectus dui, volutpat sed velit congue, pulvinar tristique nisi. Maecenas mollis rutrum bibendum. Etiam mollis diam risus, at varius ex dapibus sed. In in leo at sapien placerat sagittis.
+      -#             %cite.testimonial-cite John Doe, Company Inc.
+      -#           / TESTIMONIAL ITEM 2
+      -#           .testimonial-slide
+      -#             %span.testimonial-ratings
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star-half-o
+      -#             %blockquote.testimonial-quote
+      -#               %p Nulla lectus dui, volutpat sed velit congue, pulvinar tristique nisi. Maecenas mollis rutrum bibendum. Etiam mollis diam risus, at varius ex dapibus sed. In in leo at sapien placerat sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      -#             %cite.testimonial-cite Dohn Joe, Internet Marketer
+      -#           / TESTIMONIAL ITEM 3
+      -#           %li.testimonial-slide
+      -#             %span.testimonial-ratings
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#             %blockquote.testimonial-quote
+      -#               %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lectus dui, volutpat sed velit congue, pulvinar tristique nisi. Maecenas mollis rutrum bibendum. Etiam mollis diam risus, at varius ex dapibus sed. In in leo at sapien placerat sagittis.
+      -#             %cite.testimonial-cite John Doe, Company Inc.
+      -#           / TESTIMONIAL ITEM 4
+      -#           .testimonial-slide
+      -#             %span.testimonial-ratings
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star
+      -#               %span.fa.fa-star-half-o
+      -#             %blockquote.testimonial-quote
+      -#               %p Nulla lectus dui, volutpat sed velit congue, pulvinar tristique nisi. Maecenas mollis rutrum bibendum. Etiam mollis diam risus, at varius ex dapibus sed. In in leo at sapien placerat sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      -#             %cite.testimonial-cite Dohn Joe, Internet Marketer
+      -#     .sponsors-row{"data-animation" => "bounceIn"}
+      -#       %img{:alt => "", :src => "images/contents/sponsor-1a.png"}
+      -#         %img{:alt => "", :src => "images/contents/sponsor-2a.png"}
+      -#           %img{:alt => "", :src => "images/contents/sponsor-3a.png"}
+      -#             %img{:alt => "", :src => "images/contents/sponsor-4a.png"}
+      -# /
+      -#   PORTFOLIO
+      -#   \=================================
+      -# %section#portfolio.portfolio-section.section
+      -#   .container-fluid
+      -#     %h2.section-heading.text-center Success Examples
+      -#     .portfolio-row.row
+      -#       / PORTFOLIO - ITEM 1
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .portfolio-item
+      -#           %img.portfolio-item-picture{:alt => "", :src => "images/contents/portfolio-item-1.jpg"}
+      -#             .portfolio-item-overlay
+      -#             .portfolio-item-text
+      -#               %h4.portfolio-item-title Package Box
+      -#               %p.portfolio-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       / PORTFOLIO - ITEM 2
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .portfolio-item
+      -#           %img.portfolio-item-picture{:alt => "", :src => "images/contents/portfolio-item-2.jpg"}
+      -#             .portfolio-item-overlay
+      -#             .portfolio-item-text
+      -#               %h4.portfolio-item-title Standard Square Box
+      -#               %p.portfolio-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       .hidden-md.hidden-lg.clear
+      -#       / PORTFOLIO - ITEM 3
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .portfolio-item
+      -#           %img.portfolio-item-picture{:alt => "", :src => "images/contents/portfolio-item-3.jpg"}
+      -#             .portfolio-item-overlay
+      -#             .portfolio-item-text
+      -#               %h4.portfolio-item-title Vol22 Biz Card
+      -#               %p.portfolio-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       / PORTFOLIO - ITEM 4
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .portfolio-item
+      -#           %img.portfolio-item-picture{:alt => "", :src => "images/contents/portfolio-item-4.jpg"}
+      -#             .portfolio-item-overlay
+      -#             .portfolio-item-text
+      -#               %h4.portfolio-item-title Kyle Johnson Biz Card
+      -#               %p.portfolio-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       .clear
+      -#       / PORTFOLIO - ITEM 5
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .portfolio-item
+      -#           %img.portfolio-item-picture{:alt => "", :src => "images/contents/portfolio-item-5.jpg"}
+      -#             .portfolio-item-overlay
+      -#             .portfolio-item-text
+      -#               %h4.portfolio-item-title Open Book
+      -#               %p.portfolio-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       / PORTFOLIO - ITEM 6
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .portfolio-item
+      -#           %img.portfolio-item-picture{:alt => "", :src => "images/contents/portfolio-item-6.jpg"}
+      -#             .portfolio-item-overlay
+      -#             .portfolio-item-text
+      -#               %h4.portfolio-item-title Michael Smith Biz Card
+      -#               %p.portfolio-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       .hidden-md.hidden-lg.clear
+      -#       / PORTFOLIO - ITEM 7
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .portfolio-item
+      -#           %img.portfolio-item-picture{:alt => "", :src => "images/contents/portfolio-item-7.jpg"}
+      -#             .portfolio-item-overlay
+      -#             .portfolio-item-text
+      -#               %h4.portfolio-item-title PiecePaper Logo
+      -#               %p.portfolio-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#       / PORTFOLIO - ITEM 8
+      -#       .col-sm-6.col-md-3{"data-animation" => "fadeIn"}
+      -#         .portfolio-item
+      -#           %img.portfolio-item-picture{:alt => "", :src => "images/contents/portfolio-item-8.jpg"}
+      -#             .portfolio-item-overlay
+      -#             .portfolio-item-text
+      -#               %h4.portfolio-item-title Responsive Devices
+      -#               %p.portfolio-item-description Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -# /
+      -#   FAQ
+      -#   \=================================
+      -# %section#faq.faq-section.section
+      -#   .container
+      -#     %h2.section-heading.text-center Frequently Asked Questions
+      -#     .faq-row.row
+      -#       .col-md-6
+      -#         .faq-item
+      -#           %span.faq-item-icon.fa.fa-question-circle
+      -#           %h4.faq-item-heading How do I get started?
+      -#           .faq-item-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat arcu ut orci porta, eget porttitor felis suscipit. Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros.
+      -#       .col-md-6
+      -#         .faq-item
+      -#           %span.faq-item-icon.fa.fa-question-circle
+      -#           %h4.faq-item-heading What are the requirements?
+      -#           .faq-item-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat arcu ut orci porta, eget porttitor felis suscipit. Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros.
+      -#       .col-md-6
+      -#         .faq-item
+      -#           %span.faq-item-icon.fa.fa-question-circle
+      -#           %h4.faq-item-heading Is there any nice tutorial?
+      -#           .faq-item-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat arcu ut orci porta, eget porttitor felis suscipit. Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros.
+      -#       .col-md-6
+      -#         .faq-item
+      -#           %span.faq-item-icon.fa.fa-question-circle
+      -#           %h4.faq-item-heading How about the quality?
+      -#           .faq-item-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat arcu ut orci porta, eget porttitor felis suscipit. Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros.
+      -#       .col-md-6
+      -#         .faq-item
+      -#           %span.faq-item-icon.fa.fa-question-circle
+      -#           %h4.faq-item-heading How long til I can launch my page?
+      -#           .faq-item-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat arcu ut orci porta, eget porttitor felis suscipit. Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros.
+      -#       .col-md-6
+      -#         .faq-item
+      -#           %span.faq-item-icon.fa.fa-question-circle
+      -#           %h4.faq-item-heading How to report issue / feedback?
+      -#           .faq-item-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat arcu ut orci porta, eget porttitor felis suscipit. Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros.
+      -# /
+      -#   CONTACT + MAPS
+      -#   \=================================
+      -# %section#contact-maps.contact-maps-section.section
+      -#   .section-background
+      -#     / MAPS BACKGROUND
+      -#     .section-background-maps
+      -#       #gmap
+      -#       %script{:src => "https://maps.googleapis.com/maps/api/js?sensor=false"}
+      -#       / GOGGLE MAPS CONFIGURATION
+      -#       / ref: http://maplacejs.com/
+      -#       :javascript
+      -#         var gmap_options = {
+      -#         	generate_controls : false,
+      -#         	locations : [{
+      -#         		lat : -8.72093,
+      -#         		lon : 115.16964,
+      -#         		animation : google.maps.Animation.DROP,
+      -#         		html : "Drew Headquarter",
+      -#         		icon : "images/contents/map-1.png",
+      -#         		clickable : false,
+      -#         	}, {
+      -#         		lat : -8.71595,
+      -#         		lon : 115.17398,
+      -#         		animation : google.maps.Animation.DROP,
+      -#         		html : "Workshop & Store",
+      -#         		icon : "images/contents/map-2.png",
+      -#         		clickable : false,
+      -#         	}],
+      -#         	map_options : {
+      -#         		scrollwheel : false,
+      -#         		mapTypeControl : false,
+      -#         		streetViewControl : false,
+      -#         		zoomControlOptions : {
+      -#         			style : google.maps.ZoomControlStyle.SMALL,
+      -#         		},
+      -#         		zoom : 15,
+      -#         		set_center : [ -8.72093, 115.18964 ], // adjust the "lon" attribute of your first location
+      -#         	},
+      -#         	styles : {
+      -#         		// source: https://snazzymaps.com/style/132/light-gray
+      -#         		'custom' : [{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#d3d3d3"}]},{"featureType":"transit","stylers":[{"color":"#808080"},{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"on"},{"color":"#b3b3b3"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"weight":1.8}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"color":"#d7d7d7"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ebebeb"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#a7a7a7"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#efefef"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#696969"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"color":"#737373"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#d6d6d6"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#dadada"}]}],
+      -#         	},
+      -#         };
+      -#                 .container
+      -#     .contact-maps-row.row
+      -#       .col-md-7.col-md-offset-5
+      -#         .contact-maps-box{"data-animation" => "fadeIn"}
+      -#           %h2.section-heading Contact Us
+      -#           %p Suspendisse nisi est, ullamcorper id eleifend nec, aliquam eget quam. Vivamus erat libero, venenatis ac metus in, lobortis rhoncus ex.
+      -#           .row
+      -#             %address.col-sm-6
+      -#               %strong Drew Headquarter
+      -#               %ul.fa-ul
+      -#                 %li
+      -#                   %i.fa-li.fa.fa-home>
+      -#                   Jalan Pantai Kuta, Kuta
+      -#                   %br Bali, Indonesia
+      -#                 %li
+      -#                   %i.fa-li.fa.fa-phone>
+      -#                   Phone: +62 109 876543
+      -#                 %li
+      -#                   %i.fa-li.fa.fa-fax>
+      -#                   Fax: +62 109 876543
+      -#             %address.col-sm-6
+      -#               %strong Workshop &amp; Store
+      -#               %ul.fa-ul
+      -#                 %li
+      -#                   %i.fa-li.fa.fa-home>
+      -#                   Jalan Legian, Kuta
+      -#                   %br Bali, Indonesia
+      -#                 %li
+      -#                   %i.fa-li.fa.fa-phone>
+      -#                   Phone: +62 109 876543
+      -#                 %li
+      -#                   %i.fa-li.fa.fa-fax>
+      -#                   Fax: +62 109 876543
+      -#           %form.form.form-ajax-submit{:action => "modules/send-email.php", :method => "post", :name => "contact"}
+      -#             %p
+      -#               %strong Or drop us a line here:
+      -#             .form-validation.alert
+      -#             .form-group
+      -#               %input.form-control{:name => "contact-name", :placeholder => "Your Name", :type => "text"}
+      -#             .form-group
+      -#               %input.form-control{:name => "contact-email", :placeholder => "Email Address", :type => "text"}
+      -#             .form-group
+      -#               %input.form-control{:name => "contact-subject", :placeholder => "Subject", :type => "text"}
+      -#             .form-group
+      -#               %textarea.form-control{:name => "contact-message", :placeholder => "Message", :rows => "5"}
+      -#             .form-group
+      -#               %button.btn.btn-primary.btn-lg.btn-block Send Message
+      -# /
+      -#   CLOSING
+      -#   \=================================
+      -# %section#closing.closing-section.section-dark.section
+      -#   .section-background
+      -#     / IMAGE BACKGROUND
+      -#     .section-background-image.parallax{"data-stellar-ratio" => "0.4"}
+      -#       %img{:alt => "", :src => "images/backgrounds/closing-bg.jpg", :style => "opacity: 0.15;"}
+      -#   .container
+      -#     %h3.closing-shout Ready to start? Take the first step by clicking the button below
+      -#     .closing-buttons{"data-animation" => "tada"}
+      -#       %a.anchor-link.btn.btn-lg.btn-primary{:href => "#hero"} Footer Action Button
+      /
+        FOOTER
+        \=================================
+      %section#footer.footer-section.section
+        .container
+          %h3.footer-logo
+            %img{:alt => "Drew", :src => "images/logos/footer-logo.png", :srcset => "images/logos/footer-logo@2x.png 2x"}
+          .footer-socmed
+            %a{:href => "#", :target => "_blank"}
+              %span.fa.fa-facebook
+            %a{:href => "#", :target => "_blank"}
+              %span.fa.fa-twitter
+            %a{:href => "#", :target => "_blank"}
+              %span.fa.fa-instagram
+            %a{:href => "#", :target => "_blank"}
+              %span.fa.fa-pinterest
+          .footer-copyright
+    /
+      LIBRARIES JS
+      \=================================
+    %script{:src => "js/jquery-1.11.2.min.js"}
+    %script{:src => "js/bootstrap.min.js"}
+    %script{:src => "js/respimage.min.js"}
+    %script{:src => "js/jpreloader.min.js"}
+    %script{:src => "js/smoothscroll.min.js"}
+    %script{:src => "js/jquery.nav.min.js"}
+    %script{:src => "js/jquery.inview.min.js"}
+    %script{:src => "js/jquery.counterup.min.js"}
+    %script{:src => "js/jquery.stellar.min.js"}
+    %script{:src => "js/responsiveslides.min.js"}
+    /
+      MAIN SCRIPT
+      \=================================
+    %script{:src => "js/script.js"}
+    %script{:src => "js/movies.js"}
