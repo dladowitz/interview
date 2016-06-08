@@ -43,7 +43,10 @@
 
           %tr
             %td
-              %img{src: "#{movie["Poster"]}", height: 300}
+              -if movie["Poster"] == "N/A"
+                %img{src: "http://www.fillmurray.com/200/301", height: 300}
+              -else
+                %img{src: "#{movie["Poster"]}", height: 300}
 
   %hr
   %h1 Favorite Movies
