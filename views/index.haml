@@ -4,13 +4,14 @@
   %script(src="/js/movies.js")
 
 %body
+  %a{href:"/styled"} View Styled Version
   %h1 Movie Search
 
   -# Search Form
   %form{action:"/"}
     %label{for: "movie-title"} Movie Title:
     %input{type:"text", id: "movie-title", name:"title", placeholder:"Avengers"}
-    %input{type:"submit", value:"Submit"}
+    %input{type:"submit", value:"Search"}
 
   - if @movies_array
     %hr
@@ -20,21 +21,21 @@
     - @movies_array.each do |movie|
       %table
         %thead
-        %tr
-          %th
-            %a{href: "#", onclick: "toggleDetails( '#{movie['Title']}' )" }
-              = movie["Title"]
-          %th
-            -# Check to see if we've already favorited a movie
-            -if @favorite_ids.include? movie["imdbID"]
-              %button{id: movie["imdbID"], style: "color: blue", onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
-                Added
-            - else
-              %button{id: movie["imdbID"], onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
-                Add to Favorites
+          %tr
+            %th
+              %a{href: "#", onclick: "toggleDetails( 'details-#{movie['imdbID']}' )" }
+                = movie["Title"]
+            %th
+              -# Check to see if we've already favorited a movie
+              -if @favorite_ids.include? movie["imdbID"]
+                %button{id: movie["imdbID"], style: "color: blue", onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
+                  Added
+              - else
+                %button{id: movie["imdbID"], onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
+                  Add to Favorites
 
         -# Movie Details - Initially hidden in CSS by .movie-details class
-        %tbody.movie-details{id: movie["Title"]}
+        %tbody.movie-details{id: "details-" + movie["imdbID"]}
           %tr
             %td Year Released:
             %td= movie["Year"]

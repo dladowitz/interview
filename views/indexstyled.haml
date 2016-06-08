@@ -40,60 +40,118 @@
               .row
                 .col-md-10.col-md-offset-1
                   .hero-heading.text-center{"data-animation" => "fadeIn"}
-                    %h1.hero-title Search For a Movie
+                    %h1.hero-title#hero-title Search For a Movie
                   .row
-                    .col-md-10.col-md-offset-1
+                    .col-md-10z.col-md-offset-1
 
                       / SEARCH FORM
-                      %form{:action => "/"}
-                        .form-group
-                          %span
-                            %input.form-control.form-control-lg{:name => "title", :placeholder => "Avengers", :type => "text"}
+                      %form{:action => "/styled"}
+                        .form-group.subscription-form-wrapper
+                          %span.subscription-form-input
+                            %input.subscribe-form-email.subscribe-form-email.form-control.form-control-lg{:type => "text", :name => "title", :placeholder => "Movie Title" }
                           %span.subscription-form-submit
-                            %input.btn.btn-primary.btn-lg{type: "submit", value: "Search"}
+                            %input.btn.btn-primary.btn-lg#search-button{type: "submit", value: "Search"}
 
-      -#   / HERO START LINK
-      -#   %a.hero-start-link.anchor-link{:href => "#headline"}
-      -#     %span.fa.fa-angle-double-down
-      -# /
-      -# / HEADLINE
-      -# / \=================================
-      -# %section#headline.headline-section.section-gray.section
-      -#   .container
-      -#     %h2.section-heading.text-center.hidden Tagline
-      -#     .row
-      -#       .col-md-10.col-md-offset-1
-      -#         %p.headline-text
-      -#           Designed with the best practices,
-      -#           %strong DREW
-      -#           is a premium landing page template which cares much about design quality, functions, and the most important - your successful marketing campaign.
-      -# /
+
+
+
+
+        / HERO START LINK
+        %a.hero-start-link.anchor-link#down-arrow{:href => "#headline"}
+          %span.fa.fa-angle-double-down
+      /
+      / HEADLINE
+      / \=================================
+      %section#headline.headline-section.section-gray.section
+        .container
+          %h2.section-heading.text-center.hidden Tagline
+          .row
+            .col-md-10.col-md-offset-1
+              - if @movies_array
+                #found-movies
+                  %table.table.table-hover
+                    %tbody
+                      -# Loop through all found movies and display
+                      - @movies_array.each do |movie|
+                        %tr
+                          %td
+                            -# Check to see if we've already favorited a movie
+                            -if @favorite_ids.include? movie["imdbID"]
+                              %button{class: "btn btn-primary", id: movie["imdbID"], style: "color: blue", onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
+                                Added
+                            - else
+                              %button{class: "btn btn-default", id: movie["imdbID"], onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
+                                Favorite
+
+                          %td
+                            %a{onclick: "toggleDetails( 'details-#{movie['imdbID']}' )" }
+                              = movie["Title"]
+
+                          %td.movie-details{id: "details-" + movie["imdbID"]}
+                            = "#{movie['Year']} | #{movie['imdbID']} | #{movie["Type"]}"
+                            -unless movie["Poster"] == "N/A"
+                              |
+                              %img{src: "#{movie["Poster"]}", style: "height: 100px"}
+
+
+                      -# Movie Details - Initially hidden in CSS by .movie-details class
+                      -# %tbody.movie-details{id: movie["Title"]}
+                      -#   %tr
+                      -#     %td Year Released:
+                      -#     %td= movie["Year"]
+                      -#   %tr
+                      -#     %td IMDB ID:
+                      -#     %td= movie["imdbID"]
+                      -#   %tr
+                      -#     %td Type:
+                      -#     %td= movie["Type"]
+                      -#   %tr
+                      -#
+                      -#   %tr
+                      -#     %td
+                      -#       -# Check to see if OMDB supplied us with a poster image
+                      -#       -if movie["Poster"] == "N/A"
+                      -#         %img{src: "http://www.fillmurray.com/200/301", height: 300}
+                      -#       -else
+                      -#         %img{src: "#{movie["Poster"]}", height: 300}
+
+              %hr
+              %h1 Favorite Movies
+              -# All buttons call javascript methods. Generally they are making AJAX calls to get data
+              %button{onclick: "showFavorites()", class: "btn btn-success"} Show All
+              %button{onclick: "hideFavorites()", class: "btn btn-warning"} Hide All
+              %button{onclick: "deleteFavorites()", class: "btn btn-danger"} Delete All
+
+              %h3
+                -# Initially empty, but javascript methods add movies to this ID
+                #favorites
+      /
         DESCRIPTION
         \=================================
-      %section#about.about-section.section
-        .container
-          %h2.section-heading.text-center About Drew
-          .about-row.row
-            / DESCRIPTION IMAGE
-            .about-image.col-md-6{"data-animation" => "fadeIn"}
-              %img{:alt => "Description Image", :src => "images/contents/about.jpg"}
-            / DESCRIPTION TEXT
-            .about-text.col-md-6
-              %p.lead Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
-              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat arcu ut orci porta, eget porttitor felis suscipit. Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros. Duis ex metus, facilisis nec porta non, accumsan vel turpis. Proin euismod, sem a mollis vestibulum, ligula elit faucibus erat, in dignissim sapien leo eget quam.
-              %ul.icon-list
-                %li
-                  %span.icon-list-icon.fa.fa-hand-o-up{"data-animation" => "bounceIn"}
-                  %h4.icon-list-title Click Through
-                  %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
-                %li
-                  %span.icon-list-icon.fa.fa-heart-o{"data-animation" => "bounceIn"}
-                  %h4.icon-list-title Lead Generation
-                  %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
-                %li
-                  %span.icon-list-icon.fa.fa-lightbulb-o{"data-animation" => "bounceIn"}
-                  %h4.icon-list-title Other Purposes
-                  %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -# %section#about.about-section.section
+      -#   .container
+      -#     %h2.section-heading.text-center About Drew
+      -#     .about-row.row
+      -#       / DESCRIPTION IMAGE
+      -#       .about-image.col-md-6{"data-animation" => "fadeIn"}
+      -#         %img{:alt => "Description Image", :src => "images/contents/about.jpg"}
+      -#       / DESCRIPTION TEXT
+      -#       .about-text.col-md-6
+      -#         %p.lead Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Vivamus eu sollicitudin lacus, nec ultricies lorem.
+      -#         %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat arcu ut orci porta, eget porttitor felis suscipit. Sed a nisl ullamcorper, tempus augue at, rutrum lacus. Duis et turpis eros. Duis ex metus, facilisis nec porta non, accumsan vel turpis. Proin euismod, sem a mollis vestibulum, ligula elit faucibus erat, in dignissim sapien leo eget quam.
+      -#         %ul.icon-list
+      -#           %li
+      -#             %span.icon-list-icon.fa.fa-hand-o-up{"data-animation" => "bounceIn"}
+      -#             %h4.icon-list-title Click Through
+      -#             %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -#           %li
+      -#             %span.icon-list-icon.fa.fa-heart-o{"data-animation" => "bounceIn"}
+      -#             %h4.icon-list-title Lead Generation
+      -#             %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+      -#           %li
+      -#             %span.icon-list-icon.fa.fa-lightbulb-o{"data-animation" => "bounceIn"}
+      -#             %h4.icon-list-title Other Purposes
+      -#             %p Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
       -# /
       -#   BENEFITS
       -#   \=================================
@@ -654,16 +712,16 @@
       %section#footer.footer-section.section
         .container
           %h3.footer-logo
-            %img{:alt => "Drew", :src => "images/logos/footer-logo.png", :srcset => "images/logos/footer-logo@2x.png 2x"}
-          .footer-socmed
-            %a{:href => "#", :target => "_blank"}
-              %span.fa.fa-facebook
-            %a{:href => "#", :target => "_blank"}
-              %span.fa.fa-twitter
-            %a{:href => "#", :target => "_blank"}
-              %span.fa.fa-instagram
-            %a{:href => "#", :target => "_blank"}
-              %span.fa.fa-pinterest
+          -#   %img{:alt => "Drew", :src => "images/logos/footer-logo.png", :srcset => "images/logos/footer-logo@2x.png 2x"}
+          -# .footer-socmed
+          -#   %a{:href => "#", :target => "_blank"}
+          -#     %span.fa.fa-facebook
+          -#   %a{:href => "#", :target => "_blank"}
+          -#     %span.fa.fa-twitter
+          -#   %a{:href => "#", :target => "_blank"}
+          -#     %span.fa.fa-instagram
+          -#   %a{:href => "#", :target => "_blank"}
+          -#     %span.fa.fa-pinterest
           .footer-copyright
     /
       LIBRARIES JS
@@ -682,4 +740,4 @@
       MAIN SCRIPT
       \=================================
     %script{:src => "js/script.js"}
-    %script{:src => "js/movies.js"}
+    %script{:src => "js/moviesstyled.js"}

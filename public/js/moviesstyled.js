@@ -6,6 +6,7 @@ if(document.getElementById("found-movies")){
 // Shows or hides movie details by changing css properties
 function toggleDetails(id) {
   var state = document.getElementById(id).style.display;
+  console.log(state);
   if(state === "block"){
     document.getElementById(id).style.display = "none";
   } else {
@@ -31,7 +32,8 @@ function addToFavorites(name, id) {
     xhttp.onreadystatechange = function() {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
         document.getElementById(id).innerHTML = "Added";
-        addButton.style.color   = "blue";
+        // addButton.style.color   = "blue";
+        addButton.className += " btn btn-primary";
 
         // Clear out 'No Favorites Yet Text'
         if(document.getElementById("empty-favorites")){
@@ -39,10 +41,12 @@ function addToFavorites(name, id) {
         }
 
         // Append to Favorites Section
-        var node = document.createElement("LI");
+        var node = document.createElement("DIV");
         var textnode = document.createTextNode(name + " - Just Added!");
         node.appendChild(textnode);
         document.getElementById("favorites").appendChild(node);
+
+        location.href = "#favorites"
       }
     };
 
@@ -80,7 +84,7 @@ function showFavorites(){
       var out = "";
       var i;
       for(i = 0; i < movies.length; i++) {
-        out += '<li>' + movies[i]["name"] + '</li>'
+        out += '<div>' + movies[i]["name"] + '</div>'
       }
       document.getElementById("favorites").innerHTML = out;
     }

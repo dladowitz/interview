@@ -54,3 +54,27 @@ post '/favorites' do
   File.write('data.json',JSON.pretty_generate(file))
   movie.to_json
 end
+
+
+# Calls alternative index page with styles applied
+get '/styled' do
+  # Pull movies out of favorite list
+  # Create an array of favorite movie ids. Used in the view to check whether a movie is already favorited
+  favorite_movies = JSON.parse(File.read('data.json'))
+  @favorite_ids = favorite_movies.map{|movie| movie["oid"]}
+
+  if params[:title]
+    search_query = params[:title]
+    search_query = search_query.gsub(" ", "+") # fix whitespace so it doesn't break the query
+
+    # Make a call to the omdb api
+    omdb_response = HTTParty.get("http://www.omdbapi.com/?s=#{search_query}")
+    omdb_hash_response = JSON.parse(omdb_response.body)
+
+    # create a list of movies to pass onto the view
+    @movies_array = omdb_hash_response["Search"]
+  end
+
+  # calls the index view
+  haml :indexstyled
+end
