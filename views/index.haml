@@ -1,45 +1,55 @@
 %head
-  %link{:rel => :stylesheet, :type => :"text/css", :href => "css/add_ons.css"}
-  %script(src="js/movies.js")
+  %link{:rel => :stylesheet, :type => :"text/css", :href => "/css/add-ons.css"}
+  %script(src="/js/movies.js")
 
 %body
-  %h1 Hey lets go find some fun movies to watch.
+  %h1 Movie Search
 
   %form{action:"/"}
-    Movie Title:
-    %input{type:"text", name:"title", placeholder:"Avengers"}
-
-    %br
+    %label{for: "movie-title"} Movie Title:
+    %input{type:"text", id: "movie-title", name:"title", placeholder:"Avengers"}
     %input{type:"submit", value:"Submit"}
 
-
   - if @movies_array
-    %h2 Movies
+    %hr
+    %h1 Movies Found
     - @movies_array.each do |movie|
 
       %table
+        %thead
         %tr
           %th
             %a{href: "#", onclick: "toggleDetails( '#{movie['Title']}' )" }
               = movie["Title"]
+          %th
+            -if @favorite_ids.include? movie["imdbID"]
+              %button{id: movie["imdbID"], style: "color: blue", onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
+                Added
+            - else
+              %button{id: movie["imdbID"], onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
+                Add to Favorites
+
         %tbody.movie-details{id: movie["Title"]}
           %tr
+            %td Year Released:
             %td= movie["Year"]
           %tr
+            %td IMDB ID:
             %td= movie["imdbID"]
           %tr
+            %td Type:
             %td= movie["Type"]
           %tr
-            %td
-              %button{id: movie["imdbID"], onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
-                -if @favorite_ids.include? movie["imdbID"]
-                  Added
-                - else
-                  Add to Favorites
+
           %tr
             %td
-              %img{src: "#{movie["Poster"]}"}
+              %img{src: "#{movie["Poster"]}", height: 300}
 
-  %h2 Favorites
-  %button{onclick: "getFavorites()"} Show All
-  %h3#favorites
+  %hr
+  %h1 Favorite Movies
+  %button{onclick: "showFavorites()"} Show All
+  %button{onclick: "hideFavorites()"} Hide All
+  %button{onclick: "deleteFavorites()"} Delete All
+
+  %h3
+    #favorites

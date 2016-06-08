@@ -25,9 +25,14 @@ get '/' do
   haml :index
 end
 
-get '/  get_favorites' do
+get '/get_favorites' do
   response.header['Content-Type'] = 'application/json'
   File.read('data.json')
+end
+
+get '/delete_favorites' do
+  File.write('data.json', "[]")
+  "data.json file cleared."
 end
 
 get '/favorites' do
