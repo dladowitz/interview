@@ -41,14 +41,14 @@ function addToFavorites(name, id) {
         document.getElementById("favorites").appendChild(node);
       }
     };
-    xhttp.open("GET", "/favorites?name=" + name + "&oid=" + id , true);
+    xhttp.open("POST", "/favorites?name=" + name + "&oid=" + id , true);
     xhttp.send();
   }
 }
 
 function showFavorites(){
   var xmlhttp = new XMLHttpRequest();
-  var url = "/get_favorites";
+  var url = "/favorites";
 
   xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

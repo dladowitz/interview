@@ -1,10 +1,12 @@
 %head
+  -# Links to CSS Stylesheets and Javascript
   %link{:rel => :stylesheet, :type => :"text/css", :href => "/css/add-ons.css"}
   %script(src="/js/movies.js")
 
 %body
   %h1 Movie Search
 
+  -# Search Form
   %form{action:"/"}
     %label{for: "movie-title"} Movie Title:
     %input{type:"text", id: "movie-title", name:"title", placeholder:"Avengers"}
@@ -13,8 +15,9 @@
   - if @movies_array
     %hr
     %h1 Movies Found
-    - @movies_array.each do |movie|
 
+    -# Loop through all found movies and display
+    - @movies_array.each do |movie|
       %table
         %thead
         %tr
@@ -22,6 +25,7 @@
             %a{href: "#", onclick: "toggleDetails( '#{movie['Title']}' )" }
               = movie["Title"]
           %th
+            -# Check to see if we've already favorited a movie
             -if @favorite_ids.include? movie["imdbID"]
               %button{id: movie["imdbID"], style: "color: blue", onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
                 Added
@@ -29,6 +33,7 @@
               %button{id: movie["imdbID"], onclick: "addToFavorites( '#{movie['Title']}', '#{movie['imdbID']}' )"}
                 Add to Favorites
 
+        -# Movie Details - Initially hidden in CSS by .movie-details class
         %tbody.movie-details{id: movie["Title"]}
           %tr
             %td Year Released:
@@ -43,6 +48,7 @@
 
           %tr
             %td
+              -# Check to see if OMDB supplied us with a poster image
               -if movie["Poster"] == "N/A"
                 %img{src: "http://www.fillmurray.com/200/301", height: 300}
               -else
@@ -50,9 +56,11 @@
 
   %hr
   %h1 Favorite Movies
+  -# All buttons call javascript methods. Generally they are making AJAX calls to get data
   %button{onclick: "showFavorites()"} Show All
   %button{onclick: "hideFavorites()"} Hide All
   %button{onclick: "deleteFavorites()"} Delete All
 
   %h3
+    -# Initially empty, but javascript methods add movies to this ID
     #favorites
