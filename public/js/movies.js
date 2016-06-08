@@ -1,10 +1,5 @@
-// alert("Hello World")
-// document.getElementById("MyElement").className = "MyClass";
-// document.getElementByClass("movie-details").style.display = "show";
-
+// Shows or hides movie details by changing css properties
 function toggleDetails(title) {
-  // console.log(title)
-
   var state = document.getElementById(title).style.display;
 
   if(state === "block"){
@@ -14,16 +9,21 @@ function toggleDetails(title) {
   }
 }
 
+// Adds to stored favorites by making AJAX call to 'favorites' route
 function addToFavorites(name, id) {
-  // console.log(name)
-  // var name = name.replace(/ /g, "%20")
   var addButton = document.getElementById(id)
 
+  // Prevents user from double adding
   if(addButton.innerHTML.trim() === "Added"){
     console.log("Movie already added!")
     addButton.style.color = "red";
   } else {
+
+    // AJAX used XMLHttpRequest to make http calls
     var xhttp = new XMLHttpRequest();
+
+    // Defines what to do if the AJAX call is successful.
+    // Note it runs AFTER the call is made below with 'xhttp.send()'
     xhttp.onreadystatechange = function() {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
         document.getElementById(id).innerHTML = "Added";
@@ -41,6 +41,8 @@ function addToFavorites(name, id) {
         document.getElementById("favorites").appendChild(node);
       }
     };
+
+    Sets up the http method and route to call
     xhttp.open("POST", "/favorites?name=" + name + "&oid=" + id , true);
     xhttp.send();
   }
