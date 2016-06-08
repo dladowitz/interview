@@ -42,31 +42,37 @@ function addToFavorites(name, id) {
       }
     };
 
-    Sets up the http method and route to call
+    // Sets up the http method and route to call
     xhttp.open("POST", "/favorites?name=" + name + "&oid=" + id , true);
+
+    // Actually makes AJAX call
     xhttp.send();
   }
 }
 
+// Pulls all stored favorites and appends to favorites div
 function showFavorites(){
   var xmlhttp = new XMLHttpRequest();
-  var url = "/favorites";
 
   xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+          // Creates a json object from stored movies
           var movies = JSON.parse(xmlhttp.responseText);
           console.log(xmlhttp.responseText);
           renderFavorites(movies);
       }
   };
 
-  xmlhttp.open("GET", url, true);
+  xmlhttp.open("GET", "/favorites", true);
   xmlhttp.send();
 
+  // Loops over all movies and appends them as <li> elements to teh favorites div
   function renderFavorites(movies) {
     if(movies.length === 0){
       document.getElementById("favorites").innerHTML = "<div id='empty-favorites'>You haven't favorited any movies yet</div>";
     }else {
+      // Creates list of movies
       var out = "";
       var i;
       for(i = 0; i < movies.length; i++) {
@@ -78,23 +84,28 @@ function showFavorites(){
 }
 
 function hideFavorites(){
+  // Removed favorites from screen only
   document.getElementById("favorites").innerHTML = "";
   console.log("Clearing Favorites Div")
 }
 
+
 function deleteFavorites(){
+  // Pops up confirm button
   if (confirm("Are you sure you want to delete all favorites?") == true) {
     var xmlhttp = new XMLHttpRequest();
-    var url = "/delete_favorites";
 
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         console.log(xmlhttp.responseText);
+
+        // Removed favorites from screen only
         document.getElementById("favorites").innerHTML = "";
       }
     };
 
-    xmlhttp.open("GET", url, true);
+    // Calls delete route, lets server do the deleting from storage
+    xmlhttp.open("GET", "/delete_favorites", true);
     xmlhttp.send();
   } else {
       console.log("Ok, not deleting all favorites")
