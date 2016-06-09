@@ -1,3 +1,32 @@
+
+### Hey there General Aseembly peeps. 
+##### Thanks for checking out my work. I did two versions of this this challenge.
+[https://ga-movie-site.herokuapp.com/](https://ga-movie-site.herokuapp.com/)
+<br>
+The first just focused on the minimum requirements with no styling. It's left this way as it would be easier for students to read without trying layer on CSS and Bootstrap. You can check out the interface on heroku here: <br>
+<br>
+##### But wait, it's way cooler on this page:
+[https://ga-movie-site.herokuapp.com/styled](https://ga-movie-site.herokuapp.com/styled) <br>
+Here I added a custom boostrap theme and made things look, well, awesome. There is definitely more code, linked files and other mumbo jumbo to decifer.  In the end, I think presenting both to students would work well. Adavnced studnets could spend time learning styling and less experienced students would have a bit of hope that they aren't just learning ruby and javascript to create ugly pages. 
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
 ![GA Logo](https://raw.github.com/generalassembly/ga-ruby-on-rails-for-devs/master/images/ga.png)
 
 ## WDI Instructor Code Challenge
@@ -5,6 +34,7 @@
 ### GOAL 
 
 > Create a single page application that will utilize an external API to request movie data. The client side application will be served by a back-end which will have the ability to persist data.
+
 
 #### Back-end Instructions
 
