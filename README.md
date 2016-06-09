@@ -2,7 +2,7 @@
 ### Hey there General Aseembly peeps. 
 ##### Thanks for checking out my work. I did two versions of this this challenge.
 
-<a target= "_blank" href="https://ga-movie-site.herokuapp.com/styled">https://ga-movie-site.herokuapp.com/styled</a>
+<a target= "_blank" href="https://ga-movie-site.herokuapp.com">https://ga-movie-site.herokuapp.com</a>
 <br>
 The first just focused on the minimum requirements with no styling. It's left this way as it would be easier for students to read without trying layer on CSS and Bootstrap. You can check out the interface on heroku here: <br>
 <br>
