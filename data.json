@@ -1,46 +1,22 @@
 [
   {
-    "name": "Star Trek III: The Search for Spock",
-    "oid": "tt0088170"
-  },
-  {
-    "name": "Star Trek Into Darkness",
-    "oid": "tt1408101"
-  },
-  {
-    "name": "Star Trek",
-    "oid": "tt0796366"
-  },
-  {
-    "name": "Star Trek: First Contact",
-    "oid": "tt0117731"
-  },
-  {
-    "name": "Star Trek: Nemesis",
-    "oid": "tt0253754"
-  },
-  {
-    "name": "Star Trek II: The Wrath of Khan",
-    "oid": "tt0084726"
-  },
-  {
-    "name": "Star Trek: The Next Generation",
-    "oid": "tt0092455"
-  },
-  {
-    "name": "Bi Sexe Sandwiches",
-    "oid": "tt3150106"
-  },
-  {
     "name": "Star Wars: Episode IV - A New Hope",
     "oid": "tt0076759"
+  },
+  {
+    "name": "Star Wars: Episode III - Revenge of the Sith",
+    "oid": "tt0121766"
+  },
+  {
+    "name": "Star Wars: Clone Wars",
+    "oid": "tt0361243"
   },
   {
     "name": "Star Wars: The Clone Wars",
     "oid": "tt0458290"
   },
   {
-    "name": "Star Wars: The Clone Wars",
-    "oid": "tt1185834"
+    "name": "Star Wars: Episode V - The Empire Strikes Back",
+    "oid": "tt0080684"
   }
 ]
